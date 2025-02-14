@@ -1,13 +1,14 @@
-class ApplicationController < ActionController::Base
-    protect_from_forgery with: :exception
+class ApplicationController < ActionController::API
+  include Response
 
   def after_sign_in_path_for(resource)
     if resource.admin?
-      admin_dashboard_path # Redirect to the admin dashboard
+      render json: { message: 'Admin login successful', redirect_url: admin_dashboard_path }
     elsif resource.author?
-      authors_dashboard_path # Redirect to the authors dashboard
+      render json: { message: 'Author login successful', redirect_url: authors_dashboard_path }
     else
-      root_path # Redirect to the root path for listeners or other roles
+      render json: { message: 'Login successful', redirect_url: root_path }
     end
   end
 end
+
