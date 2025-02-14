@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
   get 'admin/index'
   # get 'page/index'
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
+
+  namespace :api do
+    namespace :v1 do
+      resources :posts, only: [:index]
+    end
+  end
 
   # Defines the root path route ("/")
   root "page#index"
