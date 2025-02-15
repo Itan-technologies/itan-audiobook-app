@@ -12,6 +12,15 @@ class User < ApplicationRecord
   private
 
   def set_default_role
-    self.role ||= :listener
+    self.role ||= :author
+  end
+
+  def jwt_payload
+    {
+      sub: id,  # User ID
+      email: email,  # User email
+      role: "listener",  # User role
+      exp: 1.days.from_now.to_i # Token expiration (optional)
+    }
   end
 end
