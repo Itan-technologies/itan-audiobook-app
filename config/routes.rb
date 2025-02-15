@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
   get 'admin/index'
   # get 'page/index'
-  devise_for :users, controllers: { 
+  devise_for :users, path: "", path_names: {
+    sign_in: 'login',
+    sign_out: 'logout',
+    registration: 'signup'
+  },
+  controllers: { 
     sessions: 'users/sessions',     
     registrations: 'users/registrations',
-    passwords: 'users/passwords',   
-    confirmations: 'users/confirmations',
-    unlocks: 'users/unlocks',       
+    # passwords: 'users/passwords',   
+    # confirmations: 'users/confirmations',
+    # unlocks: 'users/unlocks',       
     # omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
