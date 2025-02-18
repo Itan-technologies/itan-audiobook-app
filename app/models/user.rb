@@ -31,6 +31,6 @@ class User < ApplicationRecord
   end
 
   def skip_confirmation_for_admin
-  skip_confirmation! if admin?
-end
+    skip_confirmation! if admin?
+  end
 end
