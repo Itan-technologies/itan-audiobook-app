@@ -2,37 +2,34 @@
 
 class Users::SessionsController < Devise::SessionsController
   respond_to :json
-  # before_action :configure_sign_in_params, only: [:create]
 
-  # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  # Override create method to avoid Devise double rendering
+  def create
+    user = warden.authenticate!(auth_options)
+    render_login_response(user)
+  end
 
-  # POST /resource/sign_in
-  # def create
-  #   super
-  # end
-
-  # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
-
-  # protected
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  # end
   private
 
-  def respond_with(resource, _opts = {})
-    render json: { user: resource, token: request.env['warden-jwt_auth.token'] }, status: :ok
+  def render_login_response(resource)
+    return if performed? # Prevent double rendering
+
+    render json: {
+      status: {
+        code: 200,
+        message: 'Logged in successfully'
+      },
+      data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
+    }, status: :ok
   end
 
   def respond_to_on_destroy
-    render json: { message: "Logged out successfully" }, status: :ok
-  end
+    return if performed? # Prevent double rendering
 
+    if warden.authenticated?(:user)
+      render json: { status: 200, message: "Logged out successfully" }, status: :ok
+    else
+      render json: { status: 401, message: "Couldn't find an active session." }, status: :unauthorized
+    end
+  end
 end
