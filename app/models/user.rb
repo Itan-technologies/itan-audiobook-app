@@ -31,7 +31,6 @@ class User < ApplicationRecord
   end
 
   def skip_confirmation_for_admin
-  Rails.logger.debug "Skipping confirmation for admin user" if admin?
   skip_confirmation! if admin?
 end
 end
