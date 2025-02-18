@@ -1,8 +1,14 @@
 source 'https://rubygems.org'
 
 ruby '3.2.2'
+=======
+# frozen_string_literal: true
 
-gem 'dotenv-rails', groups: [:development, :test]
+source 'https://rubygems.org'
+
+ruby '3.2.2'
+
+gem 'dotenv-rails', groups: %i[development test]
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.5', '>= 7.1.5.1'
@@ -69,3 +75,6 @@ gem 'devise-jwt'
 gem 'jsonapi-serializer'
 
 gem 'rack-cors'
+
+gem 'rubocop-rails'
+

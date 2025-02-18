@@ -1,13 +1,16 @@
-class Admin::DashboardController < ApplicationController
-  before_action :authenticate_user!
-  before_action :ensure_admin!
+# frozen_string_literal: true
 
-  def index
-  end
+module Admin
+  class DashboardController < ApplicationController
+    before_action :authenticate_user!
+    before_action :ensure_admin!
 
-  def ensure_admin!
-      unless current_user.admin?
-        redirect_to root_path, alert: "You are not authorized to access this page."
-      end
+    def index; end
+
+    def ensure_admin!
+      return if current_user.admin?
+
+      redirect_to root_path, alert: 'You are not authorized to access this page.'
     end
+  end
 end

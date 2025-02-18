@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 class ChangePrimaryKeyToUuid < ActiveRecord::Migration[7.1]
   def change
     enable_extension 'pgcrypto' unless extension_enabled?('pgcrypto')
 
     # Create a new table with UUID as primary key
     create_table :new_users, id: :uuid do |t|
-      t.string :email, default: "", null: false
-      t.string :encrypted_password, default: "", null: false
+      t.string :email, default: '', null: false
+      t.string :encrypted_password, default: '', null: false
       t.string :reset_password_token
       t.datetime :reset_password_sent_at
       t.datetime :remember_created_at
@@ -34,6 +36,4 @@ class ChangePrimaryKeyToUuid < ActiveRecord::Migration[7.1]
   def down
     raise ActiveRecord::IrreversibleMigration
   end
-  
-
 end

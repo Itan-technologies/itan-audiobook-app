@@ -1,16 +1,18 @@
-class Authors::DashboardController < ApplicationController
-  before_action :authenticate_user!
-  before_action :ensure_author!
+# frozen_string_literal: true
 
-  def index
-  end
+module Authors
+  class DashboardController < ApplicationController
+    before_action :authenticate_user!
+    before_action :ensure_author!
 
-  private
+    def index; end
+
+    private
 
     def ensure_author!
-      unless current_user.author?
-        redirect_to root_path, alert: "You are not authorized to access this page."
-      end
-    end
+      return if current_user.author?
 
+      redirect_to root_path, alert: 'You are not authorized to access this page.'
+    end
+  end
 end
