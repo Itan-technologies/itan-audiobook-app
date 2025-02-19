@@ -77,4 +77,3 @@ gem 'jsonapi-serializer'
 gem 'rack-cors'
 
 gem 'rubocop-rails'
-
