@@ -1,0 +1,8 @@
+<h1>Admin Dashboard</h1>
+<p>Welcome, Admin!</p>
+<ul>
+  <li><%= link_to 'Review Book', '#' %></li>
+  <li><%= link_to 'View Analytics', '#' %></li>
+  <li><%= link_to 'Manage Users', '#' %></li>
+  <p><%= button_to 'Sign Out', destroy_user_session_path, method: :delete %></p>
+</ul>
