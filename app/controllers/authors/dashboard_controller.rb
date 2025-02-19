@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Authors
   class DashboardController < ApplicationController
     before_action :authenticate_user!
