@@ -14,8 +14,8 @@ class User < ApplicationRecord
   #associations
   has_many :purchases, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   has_and_belongs_to_many :audiobooks, join_table: 'users_audiobooks'
-  has_and_belongs_to_many :notifications, join_table: 'users_notifications'
   has_and_belongs_to_many :ebooks, join_table: 'users_ebooks'
 
   # Custom method to check if the user can sign in
