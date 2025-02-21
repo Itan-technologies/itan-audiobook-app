@@ -9,7 +9,7 @@ class Audiobook < ApplicationRecord
 
   private
 
- def generate_unique_audio_id
+  def generate_unique_audio_id
     prefix = 'AOO'
     last_audiobook = Audiobook.order(:created_at).last
     last_number = if last_audiobook&.unique_audio_id
@@ -19,5 +19,4 @@ class Audiobook < ApplicationRecord
                   end
     self.unique_audio_id = "#{prefix}#{last_number + 1}"
   end
-
 end
