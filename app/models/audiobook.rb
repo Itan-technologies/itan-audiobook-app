@@ -12,7 +12,12 @@ class Audiobook < ApplicationRecord
   def generate_unique_audio_id
     prefix = 'AOO'
     last_audiobook = Audiobook.order(:created_at).last
-    last_number = last_audiobook&.unique_audio_id&.gsub(prefix, '')&.to_i || 1000
-    self.unique_audio_id = "#{prefix}#{last_number + 1}"
-  end
+    if last_audiobook&.unique_audio_id
+    last_number = last_audiobook.unique_audio_id.gsub(prefix, '')&.to_i
+    else
+      last_number = 1000
+  end  
+  
+  self.unique_audio_id = "#{prefix}#{last_number + 1}"
+
 end

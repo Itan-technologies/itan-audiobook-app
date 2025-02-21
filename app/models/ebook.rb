@@ -12,7 +12,11 @@ class Ebook < ApplicationRecord
   def generate_unique_ebook_id
     prefix = 'BOO'
     last_ebook = Ebook.order(:created_at).last
-    last_number = last_ebook&.unique_ebook_id&.gsub(prefix, '')&.to_i || 1000
+    if last_ebook&.unique_ebook_id
+      last_number = last_ebook.unique_ebook_id.gsub(prefix, '').to_i
+    else
+      last_number = 1000
+    end
     self.unique_ebook_id = "#{prefix}#{last_number + 1}"
   end
 end
