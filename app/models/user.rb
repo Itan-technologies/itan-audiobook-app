@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   enum role: { listener: 'listener', author: 'author', admin: 'admin' }
   
-  #associations
+  #Associations
   has_many :purchases, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :notifications, dependent: :destroy
