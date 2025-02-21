@@ -2,7 +2,6 @@ class Ebook < ApplicationRecord
   before_create :generate_unique_ebook_id
 
   has_and_belongs_to_many :users, join_table: 'users_ebooks'
-  belongs_to :audiobook
   has_one :audiobook
   has_many :reviews
   has_many :purchases
