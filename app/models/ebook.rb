@@ -6,7 +6,7 @@ class Ebook < ApplicationRecord
   has_many :reviews
   has_many :purchases
   has_many :chapters
-  
+
   private
 
   def generate_unique_ebook_id

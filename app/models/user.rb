@@ -10,8 +10,8 @@ class User < ApplicationRecord
          :confirmable
 
   enum role: { listener: 'listener', author: 'author', admin: 'admin' }
-  
-  #Associations
+
+  # Associations
   has_many :purchases, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :notifications, dependent: :destroy
