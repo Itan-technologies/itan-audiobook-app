@@ -1,0 +1,6 @@
+/* stylelint-disable scss/at-rule-no-unknown */
+@import "tailwindcss";
+
+@theme {
+  --color-green: #5a607a;
+}
