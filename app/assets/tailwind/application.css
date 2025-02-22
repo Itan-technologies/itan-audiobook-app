@@ -1,5 +1,6 @@
 /* stylelint-disable scss/at-rule-no-unknown */
 @import "tailwindcss";
+
 @plugin "flowbite/plugin";
 
 @theme {
