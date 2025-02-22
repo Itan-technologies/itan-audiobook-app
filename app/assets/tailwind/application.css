@@ -1,5 +1,6 @@
-/* stylelint-disable scss/at-rule-no-unknown */
+/* stylelint-disable at-rule-no-unknown */
 @import "tailwindcss";
+/* stylelint-enable at-rule-no-unknown */
 
 /* stylelint-disable-next-line at-rule-no-unknown */
 @plugin "flowbite/plugin";
