@@ -1,6 +1,7 @@
 /* stylelint-disable scss/at-rule-no-unknown */
 @import "tailwindcss";
+@plugin "flowbite/plugin";
 
 @theme {
-  --color-green: #5a607a;
+  --color-moody: #666099;
 }
