@@ -63,3 +63,14 @@ group :development do
 end
 
 gem 'devise', '~> 4.9'
+
+# pin to tailwindcss version 3.4.13
+gem 'tailwindcss-ruby', '3.4.13'
+
+# tailwindcss for style
+gem 'tailwindcss-rails', '~> 2.7'
+
+# Font awesome for icons
+gem 'font-awesome-sass', '~> 6.5.2'
+
+gem 'sassc-rails'
