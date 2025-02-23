@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+@import "tailwindcss";
+
+@plugin "flowbite/plugin";
+
+@theme {
+  --color-moody: #666099;
+}

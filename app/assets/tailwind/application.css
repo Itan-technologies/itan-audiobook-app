@@ -1,11 +1,1 @@
-/* stylelint-disable at-rule-no-unknown */
 @import "tailwindcss";
-/* stylelint-enable at-rule-no-unknown */
-
-/* stylelint-disable-next-line at-rule-no-unknown */
-@plugin "flowbite/plugin";
-
-/* stylelint-disable-next-line at-rule-no-unknown */
-@theme {
-  --color-moody: #666099;
-}
