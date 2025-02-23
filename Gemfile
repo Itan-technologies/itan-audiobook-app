@@ -69,3 +69,8 @@ gem 'tailwindcss-ruby', '3.4.13'
 
 # tailwindcss for style
 gem 'tailwindcss-rails', '~> 2.7'
+
+# Font awesome for icons
+gem 'font-awesome-sass', '~> 6.5.2'
+
+gem 'sassc-rails'
