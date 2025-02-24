@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
 
+  helper_method :author_signed_in?
+  
   def after_sign_in_path_for(resource)
     if resource.admin?
       admin_dashboard_path # Redirect to the admin dashboard
@@ -19,5 +21,15 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update,
                                       keys: %i[email password password_confirmation current_password])
     devise_parameter_sanitizer.permit(:sign_in, keys: %i[email password])
+  end
+
+  def author_signed_in?
+    user_signed_in? && current_user.author?
+  end
+
+  def authenticate_author!
+    unless author_signed_in?
+      redirect_to root_path, alert: 'You are not authorized to access this page.'
+    end
   end
 end
