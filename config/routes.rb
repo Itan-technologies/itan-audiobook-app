@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  get 'admin/index'
-  # get 'page/index'
   devise_for :users
 
-  # Defines the root path route ("/")
-  root "page#index"
+  resources :listener_landing_pg, only: [:index]
+
+  # # Defines the root path route ("/")
+  root "author_landing_pg#index"
 
   namespace :admin do
     get 'dashboard', to: 'dashboard#index' # Admin dashboard
